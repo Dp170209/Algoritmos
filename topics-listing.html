@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Topic Listing Page</title>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+                        
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="css/templatemo-topic-listing.css" rel="stylesheet">
+<!--
+
+TemplateMo 590 topic listing
+
+https://templatemo.com/tm-590-topic-listing
+
+-->
+    </head>
+    
+    <body class="topics-listing-page" id="top">
+
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        <i class="bi-back"></i>
+                        <span>NodosSapiens</span>
+                    </a>
+
+                    <div class="d-lg-none ms-auto me-4">
+                        <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                    </div>
+    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="index.html#section_1">Home</a>
+                            </li>
+
+    
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="index.html#section_3">Como funciona</a>
+                            </li>
+
+    
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="index.html#section_5">Contáctanos</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Paginas</a>
+
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li><a class="dropdown-item active" href="topics-listing.html">Grafos</a></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <div class="d-none d-lg-block">
+                            <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            
+            <section class="section-padding">
+                <div class="container">
+                    <div class="row">
+
+                        <header class="site-header d-flex flex-column justify-content-center align-items-center">
+                            <div class="container">
+                                <div class="row align-items-center">
+            
+                                </div>
+                            </div>
+                        </header>
+
+                        <div class="col-lg-12 col-12 text-center">
+                            <h3 class="mb-4">Pizarra</h3>
+                        </div>
+
+
+                            <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                                <!DOCTYPE html>
+                                <html lang="en">
+                                  <head>
+                                    <meta charset="UTF-8" />
+                                    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                                    <title>Graph Visualization</title>
+                                    <style>
+                                      .context-menu {
+                                        position: absolute;
+                                        background-color: white;
+                                        border: 1px solid #ccc;
+                                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                                        padding: 5px;
+                                      }
+                                
+                                      .context-menu-item {
+                                        cursor: pointer;
+                                        padding: 8px;
+                                        margin: 5px;
+                                        border-radius: 5px;
+                                        transition: background-color 0.3s;
+                                      }
+                                
+                                      .context-menu-item:hover {
+                                        background-color: #f0f0f0;
+                                      }
+                                      body {
+                                        margin: 0;
+                                        padding: 0;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        height: 100vh;
+                                        background-color: #f0f0f0;
+                                      }
+                                
+                                      #contenedor {
+                                        display: flex;
+                                        flex-direction: column;
+                                        align-items: center;
+                                      }
+                                
+                                      #lienzo {
+                                        width: 800px;
+                                        height: 600px;
+                                        border: none;
+                                        border-radius: 20px;
+                                        background-color: #ffffff;
+                                        margin-bottom: 20px;
+                                      }
+                                
+                                      #botones {
+                                        margin-bottom: 20px;
+                                      }
+                                
+                                      #botones button {
+                                        margin: 0 5px;
+                                      }
+                                
+                                      #matriz-container {
+                                        text-align: center;
+                                      }
+                                
+                                      #matriz-container table {
+                                        margin: 0 auto;
+                                        border-collapse: collapse;
+                                        margin-bottom: 10px;
+                                      }
+                                
+                                      #matriz-container table,
+                                      #matriz-container th,
+                                      #matriz-container td {
+                                        border: 1px solid black;
+                                      }
+                                    </style>
+                                  </head>
+                                
+                                  <body>
+                                    <div id="contenedor">
+                                      <div id="lienzo"></div>
+                                      <div id="botones">
+                                        <button id="agregarNodoButton" onclick="toggleAgregarNodo()">
+                                          Agregar Nodo
+                                        </button>
+                                        <button id="conectarNodosButton" onclick="toggleConectarNodos()">
+                                          Conectar Nodos
+                                        </button>
+                                        <button id="eliminarTodoButton" onclick="eliminarTodo()">
+                                          Eliminar Todo
+                                        </button>
+                                        <button id="eliminarElementoButton" onclick="toggleEliminarElemento()">
+                                          Eliminar Elemento
+                                        </button>
+                                        <button id="mostrarMatrizButton" onclick="mostrarMatriz()">
+                                          Mostrar Matriz De Adyacencia
+                                        </button>
+                                        <button id="GuardarGrafo" onclick="guardarDatos()">
+                                          Guardar Grafo
+                                        </button>
+                                        <button id="CargarGrafo" onclick="cargarDatos()">Cargar Grafo</button>
+                                      </div>
+                                      <div id="matriz-container">
+                                        <table id="matriz-table" border="1"></table>
+                                      </div>
+                                    </div>
+                                
+                                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                                    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+                                    <script>
+                                      let nodosDataSet, aristasDataSet, grafo;
+                                      let conectarActivado = false;
+                                      let modoAgregarNodo = false;
+                                      let modoEliminarElemento = false;
+                                      let nodoOrigen = undefined;
+                                      let siguienteIdNodo = 1; // Contador para el siguiente ID de nodo
+                                
+                                      function inicializarGrafo() {
+                                        const contenedor = document.getElementById("contenedor");
+                                        const lienzo = document.getElementById("lienzo");
+                                        nodosDataSet = new vis.DataSet();
+                                        aristasDataSet = new vis.DataSet();
+                                        const data = { nodes: nodosDataSet, edges: aristasDataSet };
+                                        const opciones = {};
+                                        grafo = new vis.Network(lienzo, data, opciones);
+                                        // Limitar el área del grafo
+                                        grafo.on("stabilized", function () {
+                                          limitarArea();
+                                        });
+                                
+                                        // Manejar clic en nodo
+                                        grafo.on("click", function (evento) {
+                                          if (
+                                            !modoAgregarNodo &&
+                                            !modoEliminarElemento &&
+                                            evento.nodes.length > 0
+                                          ) {
+                                            const nodeId = evento.nodes[0];
+                                            if (nodoOrigen === undefined) {
+                                              nodoOrigen = nodeId;
+                                            } else if (conectarActivado) {
+                                              // Solo realizar la conexión si la conexión de nodos está activada
+                                              const nodoDestino = nodeId;
+                                
+                                              // Mostrar el cuadro de diálogo siempre
+                                              Swal.fire({
+                                                title: "Tipo de Arista",
+                                                icon: "question",
+                                                showCancelButton: true,
+                                                confirmButtonText: "Dirigida",
+                                                cancelButtonText: "No dirigida",
+                                              }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                  aristasDataSet.add({
+                                                    from: nodoOrigen,
+                                                    to: nodoDestino,
+                                                    arrows: "to",
+                                                  });
+                                                } else {
+                                                  aristasDataSet.add({ from: nodoOrigen, to: nodoDestino });
+                                                }
+                                
+                                                nodoOrigen = undefined;
+                                                conectarActivado = false; // Desactivar la opción de conectar después de la conexión
+                                                document.getElementById("conectarNodosButton").textContent =
+                                                  "Conectar Nodos";
+                                                document.getElementById("agregarNodoButton").disabled = false;
+                                              });
+                                            }
+                                          } else if (modoAgregarNodo) {
+                                            agregarNodo(evento.pointer.canvas);
+                                          } else if (modoEliminarElemento) {
+                                            const elementoId =
+                                              evento.nodes.length > 0 ? evento.nodes[0] : evento.edges[0];
+                                            if (elementoId !== undefined) {
+                                              eliminarElemento(elementoId);
+                                            }
+                                          }
+                                        });
+                                
+                                        // Agregar evento de doble clic para editar el nombre del nodo o valor de la conexión
+                                        grafo.on("doubleClick", function (evento) {
+                                          const nodeId = evento.nodes[0];
+                                          const edgeId = evento.edges[0];
+                                          if (nodeId !== undefined) {
+                                            editarNombreNodo(nodeId);
+                                          } else if (edgeId !== undefined) {
+                                            editarValorConexion(edgeId);
+                                          }
+                                        });
+                                      }
+                                
+                                      // Función para guardar los datos en un archivo
+                                      function guardarDatos() {
+                                        const datos = {
+                                          nodos: nodosDataSet.get().map((nodo) => ({
+                                            id: nodo.id,
+                                            label: nodo.label,
+                                            x: nodo.x,
+                                            y: nodo.y,
+                                          })),
+                                          aristas: aristasDataSet.get().map((arista) => ({
+                                            from: arista.from,
+                                            to: arista.to,
+                                            arrows: arista.arrows,
+                                            label: arista.label || null, // Agregar el valor del label al objeto JSON
+                                          })),
+                                        };
+                                
+                                        const datosJSON = JSON.stringify(datos, null, 2);
+                                
+                                        // Crear un objeto Blob para guardar el JSON
+                                        const blob = new Blob([datosJSON], { type: "application/json" });
+                                
+                                        // Crear un enlace de descarga
+                                        const enlaceDescarga = document.createElement("a");
+                                        enlaceDescarga.href = URL.createObjectURL(blob);
+                                        enlaceDescarga.download = "datos.json";
+                                
+                                        // Simular un clic en el enlace para iniciar la descarga
+                                        enlaceDescarga.click();
+                                      }
+                                
+                                      // Función para cargar datos desde un archivo
+                                      function cargarDatos() {
+                                        const inputArchivo = document.createElement("input");
+                                        inputArchivo.type = "file";
+                                        inputArchivo.accept = "application/json";
+                                
+                                        inputArchivo.addEventListener("change", function () {
+                                          const archivo = inputArchivo.files[0];
+                                
+                                          if (archivo) {
+                                            const lector = new FileReader();
+                                            lector.onload = function (evento) {
+                                              const contenido = evento.target.result;
+                                              const datos = JSON.parse(contenido);
+                                
+                                              // Limpiar nodos y aristas actuales
+                                              nodosDataSet.clear();
+                                              aristasDataSet.clear();
+                                
+                                              // Agregar nodos al DataSet de nodos
+                                              datos.nodos.forEach((nodo) => nodosDataSet.add(nodo));
+                                
+                                              // Agregar aristas al DataSet de aristas
+                                              datos.aristas.forEach((arista) => {
+                                                // Verificar si hay un valor de label antes de agregar la arista
+                                                if (arista.label !== null) {
+                                                  aristasDataSet.add(arista);
+                                                } else {
+                                                  // Si no hay valor de label, agregar la arista sin label
+                                                  aristasDataSet.add({
+                                                    from: arista.from,
+                                                    to: arista.to,
+                                                    arrows: arista.arrows,
+                                                  });
+                                                }
+                                              });
+                                
+                                              // Actualizar el grafo
+                                              actualizarGrafo();
+                                            };
+                                
+                                            lector.readAsText(archivo);
+                                          }
+                                        });
+                                
+                                        // Simular clic en el input de archivo
+                                        inputArchivo.click();
+                                      }
+                                
+                                      function agregarNodo(posicion) {
+                                        const nuevoId = siguienteIdNodo++;
+                                        nodosDataSet.add({
+                                          id: nuevoId,
+                                          label: "Nodo " + nuevoId,
+                                          x: posicion.x,
+                                          y: posicion.y,
+                                        });
+                                      }
+                                
+                                      function editarNombreNodo(nodeId) {
+                                        const nodeData = nodosDataSet.get(nodeId);
+                                        const centerCanvas = grafo.canvasToDOM({
+                                          x: nodeData.x,
+                                          y: nodeData.y,
+                                        });
+                                        const nodeEditInput = document.createElement("input");
+                                        nodeEditInput.type = "text";
+                                        nodeEditInput.value = nodeData.label;
+                                        nodeEditInput.style.position = "absolute";
+                                        nodeEditInput.style.left = centerCanvas.x - 35 + "px"; // Offset for the input box
+                                        nodeEditInput.style.top = centerCanvas.y - 10 + "px";
+                                        nodeEditInput.style.zIndex = "10";
+                                        nodeEditInput.style.border = "1px solid #ccc";
+                                        nodeEditInput.style.borderRadius = "5px";
+                                        nodeEditInput.style.padding = "5px";
+                                        nodeEditInput.style.background = "#fff";
+                                        nodeEditInput.style.fontFamily = "Arial, sans-serif";
+                                        nodeEditInput.style.fontSize = "14px";
+                                        nodeEditInput.style.color = "#333";
+                                
+                                        // Update node label on input change
+                                        nodeEditInput.addEventListener("input", function () {
+                                          nodosDataSet.update({ id: nodeId, label: this.value });
+                                        });
+                                
+                                        // Update node label on pressing Enter key
+                                        nodeEditInput.addEventListener("keypress", function (e) {
+                                          if (e.key === "Enter") {
+                                            nodosDataSet.update({ id: nodeId, label: this.value });
+                                            this.parentNode.removeChild(this);
+                                          }
+                                        });
+                                
+                                        // Update node label on clicking outside
+                                        grafo.once("click", function () {
+                                          nodosDataSet.update({ id: nodeId, label: nodeEditInput.value });
+                                          nodeEditInput.parentNode.removeChild(nodeEditInput);
+                                        });
+                                
+                                        document.body.appendChild(nodeEditInput);
+                                        nodeEditInput.focus();
+                                      }
+                                
+                                      function editarValorConexion(edgeId) {
+                                        const edgeData = aristasDataSet.get(edgeId);
+                                        const centerCanvas = grafo.canvasToDOM({
+                                          x: (edgeData.from.x + edgeData.to.x) / 2,
+                                          y: (edgeData.from.y + edgeData.to.y) / 2,
+                                        });
+                                        const edgeEditInput = document.createElement("input");
+                                        edgeEditInput.type = "text";
+                                        edgeEditInput.value = edgeData.label || "";
+                                        edgeEditInput.style.position = "absolute";
+                                        edgeEditInput.style.left = centerCanvas.x - 35 + "px"; // Offset for the input box
+                                        edgeEditInput.style.top = centerCanvas.y - 10 + "px";
+                                        edgeEditInput.style.zIndex = "10";
+                                        edgeEditInput.style.border = "1px solid #ccc";
+                                        edgeEditInput.style.borderRadius = "5px";
+                                        edgeEditInput.style.padding = "5px";
+                                        edgeEditInput.style.background = "#fff";
+                                        edgeEditInput.style.fontFamily = "Arial, sans-serif";
+                                        edgeEditInput.style.fontSize = "14px";
+                                        edgeEditInput.style.color = "#333";
+                                
+                                        // Update edge label on input change
+                                        edgeEditInput.addEventListener("input", function () {
+                                          aristasDataSet.update({ id: edgeId, label: this.value });
+                                        });
+                                
+                                        // Update edge label on pressing Enter key
+                                        edgeEditInput.addEventListener("keypress", function (e) {
+                                          if (e.key === "Enter") {
+                                            aristasDataSet.update({ id: edgeId, label: this.value });
+                                            this.parentNode.removeChild(this);
+                                          }
+                                        });
+                                
+                                        // Update edge label on clicking outside
+                                        grafo.once("click", function () {
+                                          aristasDataSet.update({ id: edgeId, label: edgeEditInput.value });
+                                          edgeEditInput.parentNode.removeChild(edgeEditInput);
+                                        });
+                                
+                                        document.body.appendChild(edgeEditInput);
+                                        edgeEditInput.focus();
+                                      }
+                                
+                                      function eliminarElemento(elementoId) {
+                                        if (nodosDataSet.get(elementoId) !== null) {
+                                          nodosDataSet.remove({ id: elementoId });
+                                        } else if (aristasDataSet.get(elementoId) !== null) {
+                                          aristasDataSet.remove({ id: elementoId });
+                                        }
+                                      }
+                                
+                                      function limitarArea() {
+                                        const limites = grafo.getBoundingBox();
+                                        const padding = 50; // Espacio de margen para mantener los nodos dentro del área
+                                        const contenedor = document.getElementById("contenedor");
+                                        const contenedorRect = contenedor.getBoundingClientRect();
+                                        const nuevoLargo = limites.right - limites.left + 2 * padding;
+                                        const nuevoAlto = limites.bottom - limites.top + 2 * padding;
+                                        const escala = Math.min(
+                                          contenedorRect.width / nuevoLargo,
+                                          contenedorRect.height / nuevoAlto
+                                        );
+                                        grafo.moveTo({
+                                          position: {
+                                            x: (limites.right + limites.left) / 2,
+                                            y: (limites.bottom + limites.top) / 2,
+                                          },
+                                          scale: escala,
+                                        });
+                                      }
+                                
+                                      function toggleAgregarNodo() {
+                                        modoAgregarNodo = !modoAgregarNodo;
+                                        const boton = document.getElementById("agregarNodoButton");
+                                        if (modoAgregarNodo) {
+                                          boton.textContent = "Cancelar Agregar Nodo";
+                                          document.getElementById("conectarNodosButton").disabled = true;
+                                          document.getElementById("eliminarElementoButton").disabled = true;
+                                        } else {
+                                          boton.textContent = "Agregar Nodo";
+                                          document.getElementById("conectarNodosButton").disabled = false;
+                                          document.getElementById("eliminarElementoButton").disabled = false;
+                                        }
+                                      }
+                                
+                                      function toggleConectarNodos() {
+                                        conectarActivado = !conectarActivado;
+                                        const boton = document.getElementById("conectarNodosButton");
+                                        const botonEliminar = document.getElementById("eliminarElementoButton");
+                                        if (conectarActivado) {
+                                          boton.textContent = "Cancelar Conectar Nodos";
+                                          document.getElementById("agregarNodoButton").disabled = true;
+                                        } else {
+                                          boton.textContent = "Conectar Nodos";
+                                          document.getElementById("agregarNodoButton").disabled = false;
+                                          document.getElementById("eliminarElementoButton").disabled = false;
+                                        }
+                                      }
+                                
+                                      function toggleEliminarElemento() {
+                                        modoEliminarElemento = !modoEliminarElemento;
+                                        const boton = document.getElementById("eliminarElementoButton");
+                                        if (modoEliminarElemento) {
+                                          boton.textContent = "Cancelar Eliminar Elemento";
+                                          document.getElementById("agregarNodoButton").disabled = true;
+                                          document.getElementById("conectarNodosButton").disabled = true;
+                                        } else {
+                                          boton.textContent = "Eliminar Elemento";
+                                          document.getElementById("agregarNodoButton").disabled = false;
+                                          document.getElementById("conectarNodosButton").disabled = false;
+                                        }
+                                      }
+                                
+                                      function mostrarMatriz() {
+                                        const nodos = nodosDataSet.get();
+                                        const matrizContainer = document.getElementById("matriz-container");
+                                        matrizContainer.innerHTML = "<h3>Matriz de Adyacencia</h3>";
+                                
+                                        const matriz = Array.from(Array(nodos.length), () =>
+                                          Array(nodos.length).fill(0)
+                                        );
+                                
+                                        aristasDataSet.forEach(function (arista) {
+                                          const fromIndex = nodos.findIndex((nodo) => nodo.id === arista.from);
+                                          const toIndex = nodos.findIndex((nodo) => nodo.id === arista.to);
+                                          matriz[fromIndex][toIndex] = arista.label || 1;
+                                        });
+                                
+                                        const tablaHTML =
+                                          '<table id="matriz-table" border="1"><tr><td></td>' +
+                                          nodos.map((nodo) => `<td>${nodo.label}</td>`).join("") +
+                                          "</tr>" +
+                                          matriz
+                                            .map(
+                                              (fila, index) =>
+                                                `<tr><td>${nodos[index].label}</td>${fila
+                                                  .map((valor) => `<td>${valor}</td>`)
+                                                  .join("")}</tr>`
+                                            )
+                                            .join("") +
+                                          "</table>";
+                                
+                                        matrizContainer.innerHTML += tablaHTML;
+                                      }
+                                
+                                      function crearMatrizAdyacencia() {
+                                        const nodos = nodosDataSet.getIds();
+                                        const matriz = [];
+                                
+                                        // Inicializar la matriz con ceros
+                                        for (let i = 0; i < nodos.length; i++) {
+                                          matriz[i] = [];
+                                          for (let j = 0; j < nodos.length; j++) {
+                                            matriz[i][j] = 0;
+                                          }
+                                        }
+                                
+                                        // Llenar la matriz con las conexiones
+                                        aristasDataSet.forEach(function (arista) {
+                                          const origenIndex = nodos.indexOf(arista.from);
+                                          const destinoIndex = nodos.indexOf(arista.to);
+                                          if (origenIndex !== -1 && destinoIndex !== -1) {
+                                            matriz[origenIndex][destinoIndex] = arista.label
+                                              ? parseFloat(arista.label)
+                                              : 1;
+                                          }
+                                        });
+                                
+                                        // Mostrar la matriz debajo del lienzo
+                                        const matrizDiv = document.getElementById("matriz");
+                                        matrizDiv.innerHTML = "<p>Matriz de Adyacencia:</p>";
+                                        const table = document.createElement("table");
+                                        for (let i = 0; i < nodos.length; i++) {
+                                          const row = document.createElement("tr");
+                                          for (let j = 0; j < nodos.length; j++) {
+                                            const cell = document.createElement("td");
+                                            cell.textContent = matriz[i][j];
+                                            row.appendChild(cell);
+                                          }
+                                          table.appendChild(row);
+                                        }
+                                        matrizDiv.appendChild(table);
+                                      }
+                                
+                                      function eliminarTodo() {
+                                        nodosDataSet.clear();
+                                        aristasDataSet.clear();
+                                        document.getElementById("matriz-container").innerHTML = ""; // Limpiar la matriz al eliminar todo
+                                      }
+                                
+                                      inicializarGrafo();
+                                
+                                      document.addEventListener("DOMContentLoaded", function () {
+                                        const matrizContainer = document.getElementById("matriz-container");
+                                        let menuAbierto = false;
+                                
+                                        matrizContainer.addEventListener("contextmenu", function (e) {
+                                          e.preventDefault();
+                                
+                                          if (menuAbierto) {
+                                            return;
+                                          }
+                                
+                                          const menu = document.createElement("div");
+                                          menu.className = "context-menu";
+                                          menu.innerHTML =
+                                            '<div class="context-menu-item" onclick="sumaFilasMatriz()">Suma de filas</div>' +
+                                            '<div class="context-menu-item" onclick="sumaColumnasMatriz()">Suma de columnas</div>';
+                                
+                                          menu.style.top = e.clientY + "px";
+                                          menu.style.left = e.clientX + "px";
+                                
+                                          document.body.appendChild(menu);
+                                          menuAbierto = true;
+                                
+                                          document.addEventListener("click", function () {
+                                            document.body.removeChild(menu);
+                                            menuAbierto = false;
+                                          });
+                                        });
+                                      });
+                                
+                                      function sumaFilasMatriz() {
+                                        const nodos = nodosDataSet.get();
+                                        const matrizContainer = document.getElementById("matriz-container");
+                                        const matrizTable = document.getElementById("matriz-table");
+                                
+                                        // Obtener la matriz original
+                                        const matrizOriginal = Array.from(matrizTable.rows)
+                                          .slice(1)
+                                          .map((row) =>
+                                            Array.from(row.cells)
+                                              .slice(1)
+                                              .map((cell) => parseFloat(cell.textContent))
+                                          );
+                                
+                                        // Calcular la suma de cada fila
+                                        const sumaFilas = matrizOriginal.map((fila) =>
+                                          fila.reduce((acc, valor) => acc + valor, 0)
+                                        );
+                                
+                                        // Agregar una nueva celda en la primera fila con el título "Suma de Filas"
+                                        const tituloCelda = document.createElement("td");
+                                        tituloCelda.textContent = "Suma de Filas";
+                                        matrizTable.rows[0].appendChild(tituloCelda);
+                                
+                                        // Iterar sobre cada fila y agregar una nueva celda al final con la suma de la fila
+                                        matrizTable.querySelectorAll("tr").forEach((fila, rowIndex) => {
+                                          if (rowIndex === 0) {
+                                            // Saltar la primera fila, que son las etiquetas de las columnas
+                                            return;
+                                          }
+                                
+                                          const nuevaCelda = document.createElement("td");
+                                          nuevaCelda.textContent = sumaFilas[rowIndex - 1]; // Restar 1 porque la primera fila corresponde a las etiquetas
+                                          fila.appendChild(nuevaCelda);
+                                        });
+                                      }
+                                
+                                      function sumaColumnasMatriz() {
+                                        const nodos = nodosDataSet.get();
+                                        const matrizContainer = document.getElementById("matriz-container");
+                                        const matrizTable = document.getElementById("matriz-table");
+                                
+                                        // Obtener la matriz original
+                                        const matrizOriginal = Array.from(matrizTable.rows)
+                                          .slice(1)
+                                          .map((row) =>
+                                            Array.from(row.cells)
+                                              .slice(1)
+                                              .map((cell) => parseFloat(cell.textContent))
+                                          );
+                                
+                                        // Calcular la suma de cada columna
+                                        const sumaColumnas = matrizOriginal[0].map((col, colIndex) =>
+                                          matrizOriginal.reduce((acc, fila) => acc + fila[colIndex], 0)
+                                        );
+                                
+                                        // Agregar una nueva fila en la matriz con la suma de cada columna
+                                        const nuevaFila = document.createElement("tr");
+                                        nuevaFila.innerHTML =
+                                          "<td>Suma de Columnas</td>" +
+                                          sumaColumnas.map((valor) => `<td>${valor}</td>`).join("");
+                                        matrizTable.appendChild(nuevaFila);
+                                      }
+                                    </script>
+                                  </body>
+                                </html>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+		
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/custom.js"></script>
+
+    </body>
+</html>
